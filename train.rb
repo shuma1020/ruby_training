@@ -17,7 +17,7 @@ class Counter
   end
 
   def value
-    puts @point
+    @point
   end
 end
 
