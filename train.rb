@@ -29,11 +29,24 @@ class Counter
   end
 end
 
+class EvenCounter < Counter
+  def initialize(point)
+    @point = point
+    @num = 0
+  end
 
-counter = Counter.new(2)
-counter.up
-counter.up
-counter.up
-counter.down
-counter.reset_value
-puts counter.value
+  def up
+    @num += 1
+    if @num % 2 == 0
+      @point +=1
+    else
+      false
+    end
+  end
+end
+
+couter = EvenCounter.new(1)
+p couter.up
+p couter.up
+p couter.up
+p couter.up
