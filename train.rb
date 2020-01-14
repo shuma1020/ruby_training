@@ -19,10 +19,21 @@ class Counter
   def value
     @point
   end
+
+  def down
+    @point -= 1
+  end
+
+  def reset_value
+    @point = 0
+  end
 end
 
 
 counter = Counter.new(2)
-p counter.up
-p counter.up
+counter.up
+counter.up
+counter.up
+counter.down
+counter.reset_value
 puts counter.value
