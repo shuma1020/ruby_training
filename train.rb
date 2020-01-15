@@ -39,8 +39,6 @@ class EvenCounter < Counter
     @num += 1
     if @num % 2 == 0
       @point +=1
-    else
-      false
     end
   end
 end

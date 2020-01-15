@@ -70,19 +70,18 @@ end
 
 # 格納できる本の数が指定できる本棚クラス
 class LimitedBookshelf < Bookshelf
-  def initialize(max_size = 3, fulls=0)
+  def initialize(max_size = 3)
     super() # 親のinitializeを呼びます
     @max_size = max_size
-    @fulls = fulls
+    @num = 0
   end
 
   # 親クラスが作っているメソッドを上書き（オーバーライド）できます。
   def can_add_book?(book)
-    @full_size = @books.size - @max_size
-    @fulls += @full_size
     if @books.size < @max_size
     else
-      puts @overs
+      @num +=1
+      puts @num
     end
   end
 
@@ -117,6 +116,8 @@ bookshelf = LimitedBookshelf.new
 
 bookshelf.add_book(Book.new("坊ちゃん", 520))
 bookshelf.add_book(Book.new("我輩は猫である", 454))
+bookshelf.add_book(Book.new("こころ", 876))
+bookshelf.add_book(Book.new("こころ", 876))
 bookshelf.add_book(Book.new("こころ", 876))
 if !bookshelf.add_book(Book.new("門", 345))
   puts "新しい本を追加できませんでした。今の本の数: #{bookshelf.size}"
