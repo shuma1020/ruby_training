@@ -85,7 +85,11 @@ class LimitedBookshelf < Bookshelf
   end
 
   def total_reject
-    p @num
+    if @num > 0
+      puts @num
+    else
+      p "nothing any error"
+    end
   end
 
 
@@ -119,9 +123,7 @@ bookshelf = LimitedBookshelf.new
 
 bookshelf.add_book(Book.new("坊ちゃん", 520))
 bookshelf.add_book(Book.new("我輩は猫である", 454))
-bookshelf.add_book(Book.new("こころ", 876))
-bookshelf.add_book(Book.new("こころ", 876))
-bookshelf.add_book(Book.new("こころ", 876))
+
 if !bookshelf.add_book(Book.new("門", 345))
   puts "新しい本を追加できませんでした。今の本の数: #{bookshelf.size}"
 end
