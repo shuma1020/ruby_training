@@ -81,8 +81,11 @@ class LimitedBookshelf < Bookshelf
     if @books.size < @max_size
     else
       @num +=1
-      puts @num
     end
+  end
+
+  def total_reject
+    p @num
   end
 
 
@@ -122,7 +125,4 @@ bookshelf.add_book(Book.new("こころ", 876))
 if !bookshelf.add_book(Book.new("門", 345))
   puts "新しい本を追加できませんでした。今の本の数: #{bookshelf.size}"
 end
-
-
-
-
+bookshelf.total_reject
