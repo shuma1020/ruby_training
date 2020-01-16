@@ -37,7 +37,7 @@ class Bookshelf
   def add_book(book)
     # 自分自身（self）のcan_add_book?メソッドを呼び出す
     unless self.can_add_book?(book)
-
+      return false
     end
     @books << book
     true
@@ -78,10 +78,11 @@ class LimitedBookshelf < Bookshelf
 
   # 親クラスが作っているメソッドを上書き（オーバーライド）できます。
   def can_add_book?(book)
-    if @books.size < @max_size
-    else
+    unless @books.size < @max_size
       @num +=1
+      return false
     end
+    true
   end
 
   def total_reject
@@ -121,9 +122,11 @@ end
 bookshelf = LimitedBookshelf.new
 
 bookshelf.add_book(Book.new("坊ちゃん", 520))
-bookshelf.add_book(Book.new("我輩は猫である", 454))
-bookshelf.add_book(Book.new("我輩は猫である", 454))
+bookshelf.add_book(Book.new("坊ちゃん", 520))
+bookshelf.add_book(Book.new("坊ちゃん", 520))
+bookshelf.add_book(Book.new("坊ちゃん", 520))
 if !bookshelf.add_book(Book.new("門", 345))
   puts "新しい本を追加できませんでした。今の本の数: #{bookshelf.size}"
 end
 p bookshelf.total_reject
+p bookshelf.size
